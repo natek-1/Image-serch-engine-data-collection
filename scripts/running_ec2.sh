@@ -18,7 +18,7 @@ newgrp docker
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip
 unzip awscliv2.zip
-sudo ./aws/install
+sudo ./aws/install #got /usr/local/bin/aws --version # You can now run: /usr/local/bin/aws --version
 
 ## Github Runner configuration (dependant on the project so check the code from your direct repo)
 
@@ -28,7 +28,7 @@ echo "64a47e18119f0c5d70e21b6050472c2af3f582633c9678d40cb5bcb852bcc18f  actions-
 tar xzf ./actions-runner-linux-x64-2.316.0.tar.gz
 
 ./config.sh --url https://github.com/natek-1/Image-serch-engine-data-collection --token <personal-token>
-./run.sh
+./run.sh #to run self-hosted runner cd actions-runner  and ./run.sh
 
 ## Add Github runner as a service
 sudo ./svc.sh install
