@@ -161,4 +161,6 @@ cython_debug/
 
 ImagesearchDC
 credentials.env
+# directory with our dataset
+caltech-101
 
