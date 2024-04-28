@@ -163,4 +163,5 @@ ImagesearchDC
 credentials.env
 # directory with our dataset
 caltech-101
+.github/*
 
