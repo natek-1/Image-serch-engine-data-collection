@@ -13,6 +13,9 @@ class MetaDataStore:
         self.mongo = MongodbClient()
     
     def register_labels(self):
+        '''
+        Adds images labels to our mongodb client
+        '''
         try:
             records = {}
             for num, label in enumerate(self.labels):
@@ -27,6 +30,9 @@ class MetaDataStore:
             return {"Created": False, "Reason": error.error_message}
     
     def run_step(self):
+        '''
+        runs the steps to complete the task for this class
+        '''
         try:
             self.register_labels()
             logging.info("Created")
