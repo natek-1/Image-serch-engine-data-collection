@@ -57,9 +57,11 @@ class S3Connection:
                 f"images/{label}/{unique_image_name}.jpeg",
                 ExtraArgs={"ACL": "public-read"}
             )
+            logging.info("uploaded image")
             return {"Created": True}
         except Exception as e:
             error = CustomException(e, sys)
+            logging.info("couldn't upload image")
             return {"Created": False, "Reason": error.error_message}
 
 

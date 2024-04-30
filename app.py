@@ -58,14 +58,14 @@ async def single_upload(label: str, file: UploadFile = None):
     input file: the file being uploaded
     '''
     label = choices.get(label, False) #check if label is in our list of choice{labels for dataset}
-    if file.content_type == "image_jpeg" and label:
+    if file.content_type == "image/jpeg" and label != False:
         response = s3.upload_to_s3(file.file, label)
         return {"filename": file.filename,
                 "label": label,
                 "S3-Response": response}
     else:
         return {
-            "ContentType": f"Content type should be Image/jpeg not {file.content_type}",
+            "ContentType": f"Content type should be image/jpeg not {file.content_type}",
             "label": label
         }
     
@@ -84,9 +84,9 @@ def bulk_upload(label: str, files: List[UploadFile] = File(...)):
         skippped = []
         final_response = None
         label: Union[str, Any] = choices.get(label, False)
-        if label:
+        if label != False:
             for file in files:
-                if file.content_type == "image_jpeg":
+                if file.content_type == "image/jpeg":
                     response = s3.upload_to_s3(file.file, label)
                     final_response = response
                 else:
@@ -110,7 +110,7 @@ def bulk_upload(label: str, files: List[UploadFile] = File(...)):
         return {"ContentType": f"got the following error {e}"}
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "Hello World"}
 
 
