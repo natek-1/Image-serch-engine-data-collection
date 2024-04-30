@@ -15,7 +15,7 @@ class S3Connection:
     Class used to make and manage connection with S3 bucket
     '''
     def __init__(self):
-        self.session = boto3.session(
+        self.session = boto3.Session(
             aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID'],
             aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
         )

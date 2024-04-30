@@ -15,6 +15,9 @@ choices = {}
 
 @app.get("/fetch")
 def fetch_label():
+    '''
+    Page that will show all the classes(labels) that are currently in the project
+    '''
     global choices
     result = mongo.database['labels'].find()
     documents = [document for document in result]
@@ -106,6 +109,9 @@ def bulk_upload(label: str, files: List[UploadFile] = File(...)):
     except Exception as e:
         return {"ContentType": f"got the following error {e}"}
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 
 if __name__ == "__main__":
