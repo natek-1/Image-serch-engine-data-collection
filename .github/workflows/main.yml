@@ -81,7 +81,7 @@ jobs:
               run: sudo docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:DataCollection
         
             - name: Remove Already Running Container
-              run: docker ps -q --filter "name=data-collection" | grep -q . && docker stop ${IMAGE_NAME} && docker rm -fv ${IMAGE_NAME} || true
+              run: docker ps -q --filter "name=data-collection" | grep -q . && docker stop data-collection && docker rm -fv data-collection || true
         
             - name: Docker System Prune to Remove Old Images
               run: docker system prune -f
